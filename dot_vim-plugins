@@ -19,7 +19,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug '907th/vim-auto-save'
 Plug 'terryma/vim-expand-region'
 Plug 'farmergreg/vim-lastplace'
-Plug 'vim-ctrlspace/vim-ctrlspace'
+"Plug 'vim-ctrlspace/vim-ctrlspace'
 " }
 
 " Editor Configuration {
@@ -36,7 +36,7 @@ Plug 'Lokaltog/vim-easymotion'
 
 " Editing {
 "Plug 'itchyny/vim-cursorword'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 Plug 'andymass/vim-matchup'
 " }
 

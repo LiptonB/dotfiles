@@ -46,3 +46,5 @@ source ~/.zsh-plugins.sh
 alias co='fzf-git::checkout_branch'
 
 # zprof
+
+unsetopt ignoreeof

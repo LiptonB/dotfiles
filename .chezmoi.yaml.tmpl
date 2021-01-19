@@ -11,10 +11,10 @@
 {{- $interactive = false -}}
 {{- end -}}
 
-{{- $user := env "USER" -}}
+{{- $user := env "USERNAME" | default (env "USER") -}}
 {{- if empty $user -}}
 {{- if $interactive -}}
-{{- $user = promptString "User" }}
+{{- $user = promptString "Username" }}
 {{- else -}}
 {{- $user = .chezmoi.username -}}
 {{- end -}}

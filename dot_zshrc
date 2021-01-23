@@ -48,3 +48,7 @@ alias co='fzf-git::checkout_branch'
 # zprof
 
 unsetopt ignoreeof
+#setopt append_history
+#setopt inc_append_history
+setopt share_history
+alias vim='nvim -p'

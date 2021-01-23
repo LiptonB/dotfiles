@@ -22,11 +22,12 @@ brew "fzf"
 brew "tmux"
 brew "pspg"
 brew "pgcli"
-brew "kubie"
+brew "vivid"
+brew "kubie", args: ["build-from-source"]
 brew "docker"
 brew "neovim"
-brew "chezmoi"
-brew "hasura-cli"
+brew "chezmoi", args: ["build-from-source"]
+brew "hasura-cli", args: ["build-from-source"]
 brew "diff-so-fancy"
 brew "getantibody/tap/antibody"
 brew "k9s"

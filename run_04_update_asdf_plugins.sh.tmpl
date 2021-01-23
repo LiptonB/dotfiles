@@ -1,0 +1,74 @@
+#!/bin/sh
+
+. ./.profile
+
+nodejs() {
+
+    # FIXME: Once node plugin auto installs keys
+    # Import the Node.js release team's OpenPGP keys to main keyring
+    # SEE: https://github.com/asdf-vm/asdf-nodejs/issues/138
+    $ASDF_DIR/plugins/nodejs/bin/import-release-team-keyring
+}
+
+python() {
+
+    {{ if eq .chezmoi.os "linux" }}
+
+    {{ if or (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.osRelease.id "ubuntu") }}
+
+    DEBIAN_FRONTEND=noninteractive
+
+    # Install python requirements
+    # SEE: https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+    sudo apt-get install --yes \
+        make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
+        libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev \
+        libxmlsec1-dev libffi-dev liblzma-dev
+
+    {{ end }}
+
+    {{ else if eq .chezmoi.os "darwin" }}
+
+    # FIXME: Remove after upgrade above 3.6
+    # MacOS 11 has trouble installing python
+    # It was fixed in https://github.com/python/cpython/pull/21113
+    # However it will not work for versions before 3.7 because the fix has not been backported
+    # Solution for 3.6 from comment: https://github.com/danhper/asdf-python/issues/77#issuecomment-736816437
+    IFS='.' read -r -a ver <<< "$(sw_vers -productVersion)"
+    if [[ "${ver[0]}" -ge 11 ]]; then
+        cp $ASDF_DIR/plugins/python/bin/install $ASDF_DIR/plugins/python/bin/install.orig
+        perl -npe 's|\$\(python_build_path\)\K(.*)| --patch \1 < <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch\\?full_index\\=1)|' $ASDF_DIR/plugins/python/bin/install.orig > $ASDF_DIR/plugins/python/bin/install
+    fi
+
+    {{ end }}
+}
+
+gcloud() {
+
+    # FIXME: Installing python first as a workaround to gcloud requiring it
+    # SEE: https://github.com/jthegedus/asdf-gcloud/blob/master/bin/exec-env#L6
+    asdf plugin add python
+    python
+    asdf install python
+}
+
+while read plugin version
+do
+    if asdf plugin list | grep --silent $plugin
+    then
+        asdf plugin update $plugin
+    else
+        asdf plugin add $plugin
+
+        if [ $plugin = "nodejs" ]
+        then
+            nodejs
+        elif [ $plugin = "python" ]
+        then
+            python
+        elif [ $plugin = "gcloud" ]
+        then
+            gcloud
+        fi
+    fi
+done < ~/.tool-versions

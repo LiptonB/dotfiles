@@ -1,14 +1,10 @@
 #!/bin/sh
 
-. ./.env
+. ./.profile
 
-# https://krew.sh/
-# A one-line installer for Krew and any existing Krew plugin
-
-# Install krew
-curl https://krew.sh/ | bash
+KREW_ROOT=~/.config/krew
 
 # Install krew plugins
-curl https://krew.sh/ctx | bash
-curl https://krew.sh/get-all | bash
-curl https://krew.sh/ns | bash
+kubectl krew install ns
+kubectl krew install ctx
+kubectl krew install get-all

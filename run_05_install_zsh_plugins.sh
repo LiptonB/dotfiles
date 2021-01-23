@@ -1,7 +1,7 @@
 #!/bin/sh
 
-. ./.env
+. ./.profile
 
 # Use antibody static loading
-antibody bundle < ~/.zsh-plugins > ~/.zsh-plugins.sh
+antibody bundle < ~/.zsh-plugins > $XDG_CACHE_HOME/zsh/plugins.sh
 

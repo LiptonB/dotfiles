@@ -10,6 +10,7 @@ chrissicool/zsh-256color
 zpm-zsh/colors
 
 # Completions
+marlonrichert/zsh-autocomplete
 zsh-users/zsh-completions
 # dbz/kube-aliases +1s
 felixr/docker-zsh-completion
@@ -60,7 +61,8 @@ twang817/zsh-ssh-agent
 #dbkaplun/smart-cd
 # hlissner/zsh-autopair
 zsh-users/zsh-autosuggestions
-Tarrasch/zsh-autoenv
+#Tarrasch/zsh-autoenv
+jasonmorganson/zsh-asdf-direnv
 
 # Utilities
 arzzen/calc.plugin.zsh

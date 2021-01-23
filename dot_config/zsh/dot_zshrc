@@ -1,0 +1,2 @@
+# Load zsh plugins
+source $XDG_CACHE_HOME/zsh/plugins.sh

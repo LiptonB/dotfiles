@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ./.env
+. ./.profile
 
 # Install tmux plugins
-~/.tmux/plugins/tpm/bin/install_plugins
+$XDG_CONFIG_HOME/tmux/plugins/tpm/bin/install_plugins

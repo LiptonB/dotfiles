@@ -143,7 +143,7 @@ set numberwidth=4
 set colorcolumn=0
 " }
 " Conceal {
-set conceallevel=2
+set conceallevel=0
 set concealcursor=nc
 " }
 " Spelling {

@@ -18,13 +18,16 @@
     textconv = sops -d
 
 [pull]
-    rebase = true
+    rebase = false
 
 [push]
     default = current
 
 [rebase]
     autosquash = true
+
+[merge]
+    conflictStyle = diff3
 
 [color]
     ui = always

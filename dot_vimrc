@@ -524,20 +524,6 @@ endif
 
 " }
 
-" Abbreviations {
-" Commands {
-
-cabbrev git Git
-
-" }
-" Replacements {
-
-iabbrev --- —
-iabbrev ... …
-
-" }
-" }
-
 " VIM Folders {
 
 " Ensure directory exists

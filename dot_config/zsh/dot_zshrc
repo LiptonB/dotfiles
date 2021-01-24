@@ -1,2 +1,8 @@
 # Load zsh plugins
 source $XDG_CACHE_HOME/zsh/plugins.sh
+
+unsetopt ignoreeof
+#setopt append_history
+#setopt inc_append_history
+setopt share_history
+alias vim='nvim -p'

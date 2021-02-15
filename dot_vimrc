@@ -11,17 +11,3 @@ if filereadable(expand("~/.vim-plugins"))
     source ~/.vim-plugins
     call plug#end()
 endif
-
-set textwidth=0
-set showtabline=0
-set conceallevel=0
-
-
-" Tabs
-nnoremap <Leader>e :tabnew<CR>
-nnoremap <Leader>n :tabnext<CR>
-nnoremap <Leader>p :tabp<CR>
-nnoremap <Leader>. :tabnext<CR>
-nnoremap <Leader>m :tabp<CR>
-
-nnoremap <Leader>t :FZF<CR>
